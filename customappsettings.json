@@ -1,0 +1,186 @@
+/*********************************************************
+ * 名    称：customappsettings
+ * 作    者：张祖琪
+ * 联系方式：电话[13883914813],邮件[361267211@qq.com]
+ * 创建时间：2021/5/14 16:57:45
+ * 描    述：站点配制文件--个性配置（必须对客户单独配置的内容）。
+ *
+ * 更新历史：
+ *
+ * *******************************************************/
+
+
+{
+  //数据库连接字符串
+  "ConnectionStrings": {
+    "Smart_AssetDbConnection": "Server=202.207.22.44;Database=Smart_Asset_imut_V2.2; User ID=cqvip;Password=6294518311F54936AFED024E5EAA636a;MultipleActiveResultSets=true;",
+    "Smart_PortalDbConnection": "Server=202.207.22.44;Database=Smart_Portal_imut_V2.2; User ID=cqvip;Password=6294518311F54936AFED024E5EAA636a;MultipleActiveResultSets=true;",
+    "Smart_LogDbConnection": "Server=202.207.22.44;Database=Smart_Log_imut_V2.2; User ID=cqvip;Password=6294518311F54936AFED024E5EAA636a;MultipleActiveResultSets=true;",
+    "Smart_Log_MycatDbConnection": "Server=202.207.22.41;Port=8066;Database=SmartLibMasterLog;Uid=root;Pwd=imut123456;",
+    "Smart_SchedulerConnection": "Server=202.207.22.44;Database=Smart_Task_IMUT_V2.2; User ID=cqvip;Password=6294518311F54936AFED024E5EAA636a;MultipleActiveResultSets=true;",
+    //日主库主表分库连接串，多个数据库服务器用|分隔
+    //"Smart_LogDbConnection_Template": "Server=192.168.30.60;Database=Smart_Log_{0}; User //Id=WanSL_User;Password=wan6294518311F54936AFED024E5EAA636a;MultipleActiveResultSets=true;|Server=202.207.22.44;Database=Smart_Log_{0}; User //Id=sa;Password=Smart_2019;MultipleActiveResultSets=true;"
+    "Smart_LogDbConnection_Template": "Server=202.207.22.44;Database=Smart_Log_{0}; User ID=cqvip;Password=6294518311F54936AFED024E5EAA636a;MultipleActiveResultSets=true;"
+  },
+  //.netCore自带配置
+  "AllowedHosts": "*",
+  //日志配置信息
+  "Logging": {
+    "LogLevel": {
+      "Default": "Warning"
+    }
+  },
+
+
+
+
+  "SiteConfig": {
+
+    /////////////////////////////////////服务器启动信息///////////////////////////////////////////
+    "PortalServerName": "http://lib.imut.edu.cn/", //前台
+    "MGRServerName": "http://202.207.22.41:8001", //后台
+    "ServerName": "http://202.207.22.41:8105/", //标准接口服务器
+    "PortalApiHost": "http://202.207.22.41:8105", // 前台Api启动后的主机头地址
+    "MGRApiHost": "http://202.207.22.44:8001/", //后台Api启动后的主机头地址
+    "ApiHost": "http://169.254.95.120:8105", // 标准接口启动后的主机头地址
+    ///////////////////////////////////////0--Others/////////////////////////////////////////
+
+    "Others": {
+
+      "OrganIdInVCube": "", //当前机构在智立方机构库中的id，用于查询下级机构信息，并提供系部绑定功能，不设值表示没有绑定系部功能=
+      "DatabaseTemplate": "Paged", //数据库导航列表页模板   Single/Paged =>个性
+      "ctgubookanjournalOrgid": "", //博看期刊对应机构id
+      "BigDataAnalysisSceneMenuParentId": 0, //大数据分析场景菜单父级ID
+      "GuidMenuServiceColumn": null, //多级导航栏目
+      "DiscoveryOwner": "", //电子资源来源
+      "SysSmartBigDataApi": "http://localhost:60810/api/v1",
+      "WorkReportAssembly": "", //工作报表模板生成HTML自定义处理程序集
+      "MediaProvider": ""
+    },
+
+
+
+    ///////////////////////////////////////1--前台//////////////////////////////////////////
+    "KrsInfo": {
+      "KrsSiteId": "1", //经纶的的siteId
+      "KrsOwner": "krs" //新闻细节页面的url头模板=>个性
+    },
+
+
+    "NewsConfig": {
+      "NewsColumn": "XWZX,ZYDT,DJKX", //首页新闻父级栏目展示栏目（ContentPlate表PlateSign）=>公用
+      "NewsDetailPageUrl": "http://192.168.20.104:5000/news/{0}" //新闻细节页面的url头模板=>个性
+    },
+
+    "PortalSwitch": {
+      "UseEs": true,
+      "UseCaldal": false, //Caldal检索开关
+      "IsUseDesceFlag": false, //互动是否使用逆序排列=>标准
+      "SmartCquOracleDbConnection": false //离校流程检查是否有外借设备，连接重大Oracle数据库
+    },
+    "PortalInfo": {
+      "PortalUrl": "http://169.254.95.120:8007", //门户地址
+      "FrontAssetDetailUrl": "http://169.254.95.120:8007/asset/detail/{0}" //TODO:前台资产详情页面=>个性
+    },
+    "PaperCheck": {
+      "CquCheckPaperAPI": "", //重大论文检测api接口地址
+      "EncryptKey": "ve9h321s0bjlfyon8zc67u4da5mxipwt", //论文检测密钥，管理员分配=
+      "PaperCheckUserId": "268405" //论文检测的userid =>个性
+    },
+    "Refresh": { //刷新前台的信息
+      "RefreshCache": "http://169.254.95.120:8007/api/v1/cache/clear", //刷新前台缓存api地址，
+      "RefreshCacheAid": "1", //刷新前台api接口授权应用的aid
+      "RefreshCachePid": "43a396567ec84b979363" //刷新前台api接口授权应用的pid
+    },
+    "CuitOpac": { //成都信息工程大学跳转
+      "CuitOpacUrl": "", //成都信息工程大学跳转URL
+      "CuitOpacPassword": "" //成都信息工程大学跳转Opac密码
+    },
+
+
+    ////////////////////////////////////////2--后台///////////////////////////////////////
+
+
+    "MgrSiteInfo": {
+      "SiteTitle": "智图·管理平台 ",
+      "SiteEnglishName": "Intelligent library management system of ChongQing University",
+      "ManageSiteUrl": "http://169.254.95.120:1080/core" //后台地址=>个性
+    },
+
+    "Csp": {
+      "UseCsp": false,
+      "ContentSecurityPolicyConfig": [
+        {
+          "Directive": "default-src",
+          "SourceValue": [ "192.168.21.47" ]
+        },
+        {
+          "Directive": "default-src",
+          "SourceValue": [ "'unsafe-eval'" ]
+        },
+        {
+          "Directive": "default-src",
+          "SourceValue": [ "'unsafe-inline'" ]
+        },
+        {
+          "Directive": "default-src",
+          "SourceValue": [ "*" ]
+        }
+      ]
+    },
+
+    //未找到引用，待核实
+    "YadeWebApi": {
+      "Url": "http://192.168.11.67/api/",
+      "AppId": "adlib4",
+      "Secrect": "debugging"
+    },
+
+    /////////////////////////////////////////3--API///////////////////////////////////////////////////
+
+
+
+    /////////////////////////////////////////4--公共/////////////////////////////////////////////////
+
+
+    "SiteBaseInfo": {
+      "Owner": "imut", //站点拥有者=>个性
+      "ProviderSearch": "imutneimenggugongyedaxuetushuzhibenbook", //纸本图书provider=>个性
+      "MessageFromName": "内蒙古工业大学图书馆", //短信签名
+      "JournalProvider": "imutneimenggugongyedaxueqikanzhibenjournal", //纸本期刊资源provider=>个性
+      "SiteId": "58", //站点id=>标准
+      "OldSiteLink": "", //旧站入口=>个性
+      "CasBaseUrl": "http://authserver.imut.edu.cn/authserver", //单点登录站点url
+      "ThirdPartyCasBaseUrl": "http://authserver.imut.edu.cn/authserver" //第三方单点登录地址，
+    },
+    "VpnConfig": {
+      "OpenUrlKey": "", //OpenUrl密钥=>个性
+      "OpenUrlAddress": "http://medlib.jnu.edu.cn/medlib/s/", //OpenUrl地址
+      "InnerIpValidate": false, //是否启用vpn验证
+       "InnerIp": "202.116.0.0-202.116.31.255|211.66.112.0-211.66.127.255|218.192.16.0-218.192.31.255|219.222.16.0-219.222.31.255|222.200.32.0-222.200.63.255|125.218.192.0-125.218.223.255|218.19.141.0-218.19.141.31|113.105.10.0-113.105.10.63|113.108.139.0-113.108.139.63|113.108.140.0-113.108.140.63|119.145.72.128-119.145.72.191|218.107.17.0-218.107.17.63|218.107.17.192-218.107.17.255|218.107.49.0-218.107.49.63|218.107.49.192-218.107.49.255|113.108.195.32-113.108.195.63|58.248.169.224-58.248.169.255|58.200.124.0-58.200.124.127|1.184.0.0-1.184.127.255|120.236.161.0-120.236.161.127|120.236.162.0-120.236.162.127|120.197.46.0-120.197.46.31|59.41.129.128-59.41.129.191|14.23.56.0-14.23.56.63|14.23.98.128-14.23.98.191|183.63.73.0-183.63.73.63|114.199.79.128-114.199.79.191|220.115.183.110-220.115.183.110|220.115.183.128-220.115.183.143|220.115.159.0-220.115.159.31|220.115.159.32-220.115.159.47|220.115.159.64-220.115.159.95|220.115.159.96-220.115.159.103|119.131.208.0-119.131.208.127|119.131.208.128-119.131.208.191|183.236.83.0-183.236.83.127", //内网ID段
+  
+    },
+    "FileUpload": {
+      "FileAid": "99836885", //8位数字=>个性
+      "FileKey": "CQVIP#998vip663_", //16位大写字母小写字母数字#号或_至少包含一个
+      "FileServer": "http://lib.imut.edu.cn:8004", //资源上传地址=>个性
+      "FileServerIp": "http://lib.imut.edu.cn:8004" //资源上传地址=>个性
+    },
+    "QQ": {
+      "QQClientId": "101507596", //QQ登录所需的client_id
+      "QQRedirectUri": "http://cqu.edu.cn/user/socialaccountbinding" //QQ登录所需的回调地址redirect_uri
+    },
+    "JwtOrg": { //Jwt验证机构
+      "JwtorgOwner": "demo", //Jwt验证机构代号
+      "JwtorgId": "client_demo_999", //Jwt验证机构账号
+      "JwtOrgSecret": "client_demo_1314" //Jwt验证机构密码
+    },
+
+
+    "Micro": {
+      "MicroOtherUrl": "", //论文提交系统对接地址  本部开发
+      "MicroMenuID": "" //论文提交系统对接 menu表ID  本部开发
+    }
+
+  }
+}

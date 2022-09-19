@@ -1,0 +1,369 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>天秀后台管理系统--首页</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="~/lib/layui-v2.5.5/css/layui.css" rel="stylesheet" />
+    <link href="~/lib/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/lib/layui-v2.5.5/css/layui-theme-custom.css" rel="stylesheet" />
+    <link href="~/css/public.css" rel="stylesheet" />
+    <style>
+        .layui-card {
+            border: 1px solid #f2f2f2;
+            border-radius: 5px;
+        }
+
+        .icon {
+            margin-right: 10px;
+            color: #1aa094;
+        }
+
+        .layui-card-header {
+            position: relative;
+            height: 42px;
+            line-height: 42px;
+            padding: 0 15px;
+            border-bottom: 1px solid #f6f6f6;
+            color: #333;
+            border-radius: 2px 2px 0 0;
+            font-size: 14px;
+        }
+
+        .layui-top-box {
+            padding: 15px 5px 5px 0px;
+            color: #fff;
+        }
+
+        .panel {
+            margin-bottom: 17px;
+            background-color: #fff;
+            border: 1px solid transparent;
+            border-radius: 3px;
+            -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+            box-shadow: 0 1px 1px rgba(0,0,0,.05);
+        }
+
+        .panel-body {
+            padding: 15px;
+        }
+
+        .panel-title {
+            margin-top: 0;
+            margin-bottom: 0;
+            font-size: 14px;
+            color: inherit;
+        }
+
+        .label {
+            display: inline;
+            padding: .2em .6em .3em;
+            font-size: 75%;
+            font-weight: 700;
+            line-height: 1;
+            color: #fff;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: baseline;
+            border-radius: .25em;
+            margin-top: .3em;
+        }
+
+        .layui-red {
+            color: red;
+        }
+
+        .main_btn > p {
+            height: 40px;
+        }
+
+        .layui-bg-welcome {
+            background-image: linear-gradient(to left, rgb(30, 159, 255), rgb(34, 34, 34)) !important;
+        }
+
+        .layui-bg-welcome1 {
+            background-image: linear-gradient(to left, rgb(33, 70, 85), rgb(34, 34, 34)) !important;
+        }
+
+        .layui-bg-welcome2 {
+            background-image: linear-gradient(to left, rgb(32, 100, 140), rgb(33, 70, 85)) !important;
+        }
+
+        .layui-bg-welcome3 {
+            background-image: linear-gradient(to left, rgb(31, 130, 195), rgb(32, 100, 140)) !important;
+        }
+
+        .layui-bg-welcome4 {
+            background-image: linear-gradient(to left, rgb(30, 160, 255), rgb(31, 130, 195)) !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="layuimini-container">
+        <div class="layuimini-main layui-top-box">
+            <div class="layui-row layui-col-space10">
+                <div class="layui-col-md12">
+                    <div class="col-xs-12 col-md-12">
+                        <div class="panel layui-bg-welcome">
+                            <div class="panel-body">
+                                <div class="panel-title">
+                                    <h2>
+                                        尊敬的管理员:<span id="UserName"></span> &nbsp;!&nbsp;&nbsp;欢迎您來到天秀后台管理系统！
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row layui-col-space10">
+                <div class="layui-col-md3">
+                    <div class="col-xs-6 col-md-3">
+                        <div class="panel layui-bg-welcome1">
+                            <div class="panel-body">
+                                <div class="panel-title">
+                                    <span class="label pull-right layui-bg-blue">实时统计</span>
+                                    <h5>用户数量</h5>
+                                </div>
+                                <div class="panel-content">
+                                    <h1 class="no-margins" id="UserNum"></h1>
+                                    <div class="stat-percent font-bold text-gray"><i class="fa fa-user"></i><span id="User_Num"></span></div>
+                                    <small>用户数量总记录数</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md3">
+                    <div class="col-xs-6 col-md-3">
+                        <div class="panel layui-bg-welcome2">
+                            <div class="panel-body">
+                                <div class="panel-title">
+                                    <span class="label pull-right layui-bg-cyan">实时统计</span>
+                                    <h5>测试1数量</h5>
+                                </div>
+                                <div class="panel-content">
+                                    <h1 class="no-margins" id="Ces1Num"></h1>
+                                    <div class="stat-percent font-bold text-gray"><i class="fa fa-pie-chart"></i><span id="Ces1_Num"></span></div>
+                                    <small>测试1数量总记录数</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-col-md3">
+                    <div class="col-xs-6 col-md-3">
+                        <div class="panel layui-bg-welcome3">
+                            <div class="panel-body">
+                                <div class="panel-title">
+                                    <span class="label pull-right layui-bg-orange">实时统计</span>
+                                    <h5>测试2数量</h5>
+                                </div>
+                                <div class="panel-content">
+                                    <h1 class="no-margins" id="Ces2Num"></h1>
+                                    <div class="stat-percent font-bold text-gray"><i class="fa fa-commenting"></i><span id="Ces2_Num"></span></div>
+                                    <small>测试2数量总记录数</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md3">
+                    <div class="col-xs-6 col-md-3">
+                        <div class="panel layui-bg-welcome4">
+                            <div class="panel-body">
+                                <div class="panel-title">
+                                    <span class="label pull-right layui-bg-green">实时统计</span>
+                                    <h5>测试3数量</h5>
+                                </div>
+                                <div class="panel-content">
+                                    <h1 class="no-margins" id="Ces3Num"></h1>
+                                    <div class="stat-percent font-bold text-gray"><i class="fa fa-eye"></i><span id="Ces3_Num"></span></div>
+                                    <small>测试3数量总记录数</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="layui-box">
+            <div class="layui-row layui-col-space10">
+                <div class="layui-col-xs12 layui-col-md7">
+                    <div class="layui-card">
+                        <div class="layui-card-header"><i class="fa fa-line-chart icon"></i>报表统计</div>
+                        <div class="layui-card-body">
+                            <div id="echarts-records" style="width: 100%;min-height:500px"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-xs12 layui-col-md5">
+                    <div class="layui-card">
+                        <div class="layui-card-header"><i class="fa fa-fire icon"></i>版本信息</div>
+                        <div class="layui-card-body layui-text">
+                            <table class="layui-table">
+                                <colgroup>
+                                    <col width="100">
+                                    <col>
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <td>系统名称</td>
+                                        <td>
+                                            天秀后台管理系统
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>当前版本</td>
+                                        <td>v1.0.0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>主要特色</td>
+                                        <td>零门槛 / 响应式 / 清爽 / 极简</td>
+                                    </tr>
+                                    <tr>
+                                        <td>开发维护</td>
+                                        <td>
+                                            嘻嘻
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>使用环境</td>
+                                        <td>
+                                            现主流的浏览器都能完美运行
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>开发环境</td>
+                                        <td>
+                                            基于VS2022开发平台使用ASP.NET+MVC+EF6+Layui前端框架实现
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="layui-card">
+                        <div class="layui-card-header"><i class="fa fa-paper-plane-o icon"></i>作者心语</div>
+                        <div class="layui-card-body layui-text layadmin-text">
+                            <p>测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</p>
+                            <br />
+                            <p>测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../lib/layui-v2.5.5/layui.js"></script>
+    <script src="../js/lay-config.js?v=1.0.4" charset="utf-8"></script>
+    <script>
+        layui.use(['layer', 'echarts'], function () {
+            var $ = layui.jquery,
+                layer = layui.layer,
+                echarts = layui.echarts;
+            var UserName = sessionStorage.getItem("UserName");
+            if (UserName != null && UserName != "") {
+                document.getElementById("UserName").innerText = UserName;
+                $("#UserNum").html(Math.floor(Math.random() * 100));
+                $("#User_Num").html(Math.floor(Math.random() * 100));
+                $("#Ces1Num").html(Math.floor(Math.random() * 100));
+                $("#Ces1_Num").html(Math.floor(Math.random() * 100));
+                $("#Ces2Num").html(Math.floor(Math.random() * 100));
+                $("#Ces2_Num").html(Math.floor(Math.random() * 100));
+                $("#Ces3Num").html(Math.floor(Math.random() * 100));
+                $("#Ces3_Num").html(Math.floor(Math.random() * 100));
+                var echartsRecords = echarts.init(document.getElementById('echarts-records'), 'walden');
+                var option = {
+                    title: {
+                        text: '天秀后台系统数据统计',
+                        subtext: '实时统计',
+                        left: 'center'
+                    },
+                    tooltip: {
+                        trigger: 'item'
+                    },
+                    legend: {
+                        orient: 'vertical',
+                        left: 'left',
+                    },
+                    series: [
+                        {
+                            name: '实时统计',
+                            type: 'pie',
+                            radius: '50%',
+                            data: [
+                                { value: Math.floor(Math.random() * 100), name: '用户数量' },
+                                { value: Math.floor(Math.random() * 100), name: '测试1数量' },
+                                { value: Math.floor(Math.random() * 100), name: '测试2数量' },
+                                { value: Math.floor(Math.random() * 100), name: '测试3数量' }
+                            ],
+                            emphasis: {
+                                itemStyle: {
+                                    shadowBlur: 10,
+                                    shadowOffsetX: 0,
+                                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                }
+                            }
+                        }
+                    ]
+                };
+                echartsRecords.setOption(option);
+
+                // echarts 窗口缩放自适应
+                window.onresize = function () {
+                    echartsRecords.resize();
+                }
+            }
+            else {
+                window.location = '/Home/Login';
+            }
+        });
+
+        //function run() {
+        //    var time = new Date(); //获取系统当前时间
+        //    var year = time.getFullYear();
+        //    var month = time.getMonth() + 1;
+        //    var date = time.getDate(); //系统时间月份中的日
+        //    var day = time.getDay(); //系统时间中的星期值
+        //    var weeks = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+        //    var week = weeks[day]; //显示为星期几
+        //    var hour = time.getHours();
+        //    var minutes = time.getMinutes();
+        //    var seconds = time.getSeconds();
+        //    if (month < 10) {
+        //        month = "0" + month;
+        //    }
+        //    if (date < 10) {
+        //        date = "0" + date;
+        //    }
+        //    if (hour < 10) {
+        //        hour = "0" + hour;
+        //    }
+        //    if (minutes < 10) {
+        //        minutes = "0" + minutes;
+        //    }
+        //    if (seconds < 10) {
+        //        seconds = "0" + seconds;
+        //    }
+        //    document.getElementById("current-time").innerHTML = year + "年" + month + "月" + date + "日" + " " + week + " " +
+        //        +hour + ":" + minutes + ":" + seconds;
+        //    setTimeout('run()', 1000);
+        //}
+
+        /*run();*/
+    </script>
+</body>
+</html>

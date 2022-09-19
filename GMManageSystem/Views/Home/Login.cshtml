@@ -1,0 +1,117 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>管理员登录</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="icon" href="../../images/DCW.ico">
+    <link rel="stylesheet" href="../../lib/layui-v2.5.5/css/layui.css" media="all">
+    <link href="~/css/Login.css" rel="stylesheet" />
+    <!--[if lt IE 9]>
+    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <div class="main-body">
+        <div class="login-main">
+            <div class="login-top">
+                <span>管理员登录</span>
+                <span class="bg1"></span>
+                <span class="bg2"></span>
+            </div>
+            <form class="layui-form login-bottom">
+                <div class="center">
+                    <div class="item">
+                        <span class="icon icon-2"></span>
+                        <input type="text" name="Account" lay-verify="required" placeholder="请输入账号" maxlength="50" />
+                    </div>
+                    <div class="item">
+                        <span class="icon icon-3"></span>
+                        <input type="password" name="PassWord" lay-verify="required" placeholder="请输入密码" maxlength="100">
+                        <span class="bind-password icon icon-4"></span>
+                    </div>
+                </div>
+                <div class="layui-form-item" style="text-align:center; width:100%;height:100%;margin:0px;">
+                    <button class="login-btn" lay-submit="" lay-filter="login">立即登录</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="footer">
+        ©版权所有 2022-2022 嘻嘻 开发入门测试<span class="padding-5">|</span><a target="_blank" href="http://www.baidu.com">646636486</a>
+    </div>
+    <script src="../lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+    <script>
+        layui.use(['form', 'jquery'], function () {
+            var $ = layui.jquery,
+                form = layui.form,
+                layer = layui.layer;
+            $(document).ready(function () {
+                sessionStorage.clear();
+            });
+
+            $('.bind-password').on('click', function () {
+                if ($(this).hasClass('icon-5')) {
+                    $(this).removeClass('icon-5');
+                    $("input[name='PassWord']").attr('type', 'password');
+                } else {
+                    $(this).addClass('icon-5');
+                    $("input[name='PassWord']").attr('type', 'text');
+                }
+            });
+
+            $('.icon-nocheck').on('click', function () {
+                if ($(this).hasClass('icon-check')) {
+                    $(this).removeClass('icon-check');
+                } else {
+                    $(this).addClass('icon-check');
+                }
+            });
+
+            // 进行登录操作
+            form.on('submit(login)', function (data) {
+                data = data.field;
+                if (data.Account == '') {
+                    layer.msg('账户不能为空');
+                    return false;
+                }
+                if (data.PassWord == '') {
+                    layer.msg('密码不能为空');
+                    return false;
+                }
+                $.ajax({
+                    url: '/Home/AdminLogin',
+                    type: "POST",
+                    data: { userInfo: data },
+                    success: function (res) {
+                        if (res.code == 0) {
+                            layer.msg(res.msg, { icon: 1, time: 1000 }, function () {
+                                sessionStorage.setItem("UserName", res.data);
+                                window.location = '/Home/Index';
+                            });
+                        }
+                        else {
+                            layer.msg(res.msg, { icon: 2, time: 2000 });
+                        }
+                    }, error: function () {
+                        layer.msg("登录异常，请联系超级管理员！", { icon: 2, time: 2000 });
+                    }
+                });
+                return false;
+            });
+        });
+    </script>
+</body>
+</html>
